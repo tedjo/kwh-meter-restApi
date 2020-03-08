@@ -35,10 +35,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </ol>
             </nav>
 
-            <?php if (file_exists(FCPATH . 'user_guide/index.html')) : ?>
-                <p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="<?php echo base_url('user_guide/index.html'); ?>" target="_blank">User Guide</a>.</p>
-            <?php endif ?> -->
-
             <div class="card-deck">
 
                 <div class="card bg-light mb-3 ">
