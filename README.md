@@ -2,6 +2,9 @@
 monitor arus listrik.
 web server rest api dengan memonitoring arus listrik yang di hungungkan dengan device Arduino atau Nodemcu ESP8266.
 
+# Monitoring Listrik Website
+
+![Alt text](./promo.png?raw=true "kWh Meter")
 
 untuk menggunakan jangan lupa setting terlebih dahulu :
 - config : helper, url, databases.
