@@ -4,7 +4,7 @@ web server rest api dengan memonitoring arus listrik yang di hungungkan dengan d
 
 # Monitoring Listrik Website
 
-![Alt text](./promo.png?raw=true "kWh Meter")
+![Alt text](./promo.PNG?raw=true "kWh Meter")
 
 untuk menggunakan jangan lupa setting terlebih dahulu :
 - config : helper, url, databases.
