@@ -83,12 +83,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="card-body">
                     <h5 class="card-title">Tagihan Listrik 1 Bulan</h5>
                     <p class="card-text">
-                        <h1>Rp <?= $kwhmeter['tarif']; ?>,00 </h1>
+                        <h1>Rp <?= number_format($kwhmeter['tarif'], 2, ',', '.'); ?> </h1>
                     </p>
                 </div>
                 <div class="card-footer">
                     <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
                 </div>
+            </div>
+
+            <div class="card bg-light mb-3">
+                <div class="card-header">Tarif</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">kWh</th>
+                            <th scope="col">Biaya</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>01/02/2020</td>
+                            <td>170</td>
+                            <td>Rp 250.000,00</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="alert alert-primary" role="alert">
