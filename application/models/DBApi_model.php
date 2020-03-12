@@ -44,4 +44,16 @@ class DBApi_model extends CI_Model
         $this->db->where('id = 1');
         return $this->db->get()->row_array();
     }
+
+    public function getRekapDate()
+    {
+        $this->db->order_by('date ASC');
+        return $this->db->get('rekap')->result_array();
+    }
+
+    public function updateStatus()
+    {
+        $this->db->update('info_kwh', ['status' => 1], ['id' => 1]);
+        return $this->db->affected_rows();
+    }
 }

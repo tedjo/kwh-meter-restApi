@@ -11,7 +11,10 @@ class Welcome extends CI_Controller
 
 	public function index()
 	{
+		$this->dbApi->updateStatus();
+		sleep(1);
 		$data['kwhmeter'] = $this->dbApi->getKwhMeter();
+		$data['rekapdate'] = $this->dbApi->getRekapDate();
 
 		$this->load->helper('url');
 
