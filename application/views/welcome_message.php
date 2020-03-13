@@ -17,26 +17,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 
     <div class="container">
-        <!-- <h1>Welcome to Monitoring!</h1> -->
         <br><br>
         <div id="body">
-
-            <!-- <h2><a href="<?php echo site_url('rest-server'); ?>">REST Server Tests</a></h2> -->
-
-            <?php if (file_exists(FCPATH . 'documentation/index.html')) : ?>
-                <h2><a href="<?php echo base_url('documentation/index.html'); ?>" target="_blank">REST Server Documentation</a></h2>
-            <?php endif ?>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">
                         <h1>Welcome to Monitoring!</h1>
-                        <!-- <h2><a href="<?php echo site_url('rest-server'); ?>">REST Server Tests</a></h2> -->
                     </li>
                 </ol>
             </nav>
 
-            <div class="card-deck">
 
+
+            <div class="card-deck">
                 <div class="card bg-light mb-3 ">
                     <div class="card-header">Amper</div>
                     <div class="card-body">
@@ -92,7 +85,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
 
             <div class="card bg-light mb-3">
-                <div class="card-header">Tarif</div>
+                <div class="card-header">Rekap Tagihan Bulanan</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -103,19 +96,33 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>01/02/2020</td>
-                            <td>170</td>
-                            <td>Rp 250.000,00</td>
-                        </tr>
+                        <?php $number = 1; ?>
+                        <?php foreach ($rekapdate as $mData) : ?>
+                            <tr>
+                                <th><?= $number; ?></th>
+                                <?php $source = $mData['date'];
+                                $date = new DateTime($source); ?>
+                                <td><?= $date->format('d-m-Y'); ?></td>
+                                <td><?= $mData['kwh']; ?></td>
+                                <td>Rp <?= number_format($mData['tarif'], 2, ',', '.'); ?></td>
+                            </tr>
+                            <?php $number++; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
 
-            <div class="alert alert-primary" role="alert">
-                Device Start <?= $kwhmeter['time_on']; ?>
-            </div>
+            <ol class="breadcrumb alert alert-primary" role="alert">
+                <?php $sourceDate = $kwhmeter['date'];
+                $dateDate = new DateTime($sourceDate); ?>
+                <li class="text-nowrap " aria-current="page"><?= $kwhmeter['day']; ?>&nbsp; <?= $dateDate->format('d-m-Y'); ?> | Device &nbsp;</li>
+                <?php if ($kwhmeter['status'] == 1) : ?>
+                    <li class="text-nowrap  text-success">Redy</a></li>
+                <?php else : ?>
+                    <li class="text-nowrap  text-danger">Stop</a></li>
+                <?php endif; ?>
+                &nbsp; <?= $kwhmeter['time_on']; ?>
+            </ol>
         </div>
     </div>
 
